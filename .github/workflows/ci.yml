@@ -1,0 +1,22 @@
+name: HTML Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  html-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install tidy
+      run: sudo apt-get install tidy
+
+    - name: Validate HTML
+      run: |
+        find . -name "*.html" -print0 | xargs -0 tidy -errors -q || true
