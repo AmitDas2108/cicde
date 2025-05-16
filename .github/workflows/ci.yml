@@ -19,4 +19,4 @@ jobs:
 
     - name: Validate HTML
       run: |
-        find . -name "*.html" -print0 | xargs -0 tidy -errors -q || true
+        find . -name "*.html" -print0 | xargs -0 tidy -errors -q
